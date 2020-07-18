@@ -4,10 +4,15 @@ def threeSum(self, nums):
     nums.sort()     
         
     for i in range(n-2):
+        #if the array has only +ve nums
         if nums[i] > 0:
             break
+            
+        #if aray is sorted, below condition would imply that this i won't work
         if i > 0 and nums[i] == nums[i-1]:
             continue
+            
+        #Two pointers to check for sum
         l, r = i + 1, n - 1
         while l < r:
             s = nums[i] + nums[l] + nums[r]
