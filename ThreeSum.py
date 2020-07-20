@@ -20,12 +20,12 @@ def threeSum(self, nums):
                 l += 1
             elif s > 0:  #If sum is positive, decrease right ptr to decrease sum
                 r -= 1
-            else:        # if sum i s zero, assign the triplet to res
+            else:        # if sum i s zero, append the triplet to res
                 res.append([nums[i], nums[l], nums[r]])
                     
-                while l < r and nums[l] == nums[l+1]:
+                while l < r and nums[l] == nums[l+1]: #increase left pte ensuring no duplication
                     l += 1
-                while l < r and nums[r] == nums[r-1]:
+                while l < r and nums[r] == nums[r-1]: #decrease right ptr ensuring no duplication
                     r -= 1
                 l += 1
                 r -= 1
