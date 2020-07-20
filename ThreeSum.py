@@ -8,7 +8,7 @@ def threeSum(self, nums):
         if nums[i] > 0:
             break
             
-        #if aray is sorted, below condition would imply that this i won't work
+        #if aray is sorted, below condition would imply that this i will lead to duplicates
         if i > 0 and nums[i] == nums[i-1]:
             continue
             
