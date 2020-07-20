@@ -16,11 +16,11 @@ def threeSum(self, nums):
         l, r = i + 1, n - 1
         while l < r:
             s = nums[i] + nums[l] + nums[r]
-            if s < 0:
+            if s < 0:    #If sum is negative, increase left ptr to increase sum
                 l += 1
-            elif s > 0:
+            elif s > 0:  #If sum is positive, decrease right ptr to decrease sum
                 r -= 1
-            else:
+            else:        # if sum i s zero, assign the triplet to res
                 res.append([nums[i], nums[l], nums[r]])
                     
                 while l < r and nums[l] == nums[l+1]:
