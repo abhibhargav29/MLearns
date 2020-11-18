@@ -52,6 +52,7 @@ class KNNClassifier():
             y_pred.append(majorLabel)
         return y_pred
             
+#Compare performace of our classifier vs sklearn's classifier on iris dataset
 iris = pandas.read_csv("Data/iris.csv")    
 iris=iris.drop("species", axis=1).to_numpy()
 iris_L = [0]*50+[1]*50+[2]*50
