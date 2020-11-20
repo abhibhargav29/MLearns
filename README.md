@@ -5,7 +5,7 @@ is one or mode graphs comparing accuracies of our and sklearn's model on various
 
 ## KNN
 <ins>KNNClassifier:</ins>
-We have implemented knn using brute force algorithm, majority vote technique for label determination and used minkowski distance, the user can provide his own values for p. The   
+We have implemented knn using brute force algorithm, majority vote technique for label determination and used minkowski distance, the user can provide his own values for p. The
 model is implemented as a class and we have to pass k and p along with declaration. It has a fit and predict method which takes in numpy arrays or lists. Its accuracies were 
 identical to that of sklearn's model
 
