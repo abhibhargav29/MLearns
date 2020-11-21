@@ -44,6 +44,7 @@ class KNNClassifier(KNNBase):
             res = Counter(res)
             majorLabel = -1
             curr = 0
+            #Majority Vote
             for k,v in res.items():
                 if(v>curr):
                     majorLabel = k
