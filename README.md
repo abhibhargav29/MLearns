@@ -15,8 +15,9 @@ We have used same base class for both classification and regression classes, onl
 ## DATA
 <ins>Iris:</ins>
 The dataset is taken for iris flower dataset kaggle, it is a very famous toy dataset. It needs not to be normalized because all parameters are in inches only. We have 3 class 
-classification with balanced data for each class.
+classification with balanced data for each class. Link: https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-pages/data/iris.csv
 
 <ins>BostonHP:</ins>
 This is the boston house prices dataset which has 12-features or variables for 506 houses and we have to predict the house price. It is already stored in standardized form and 
-just needs to be loaded, split and given to the model.
+just needs to be loaded, split and given to the model. It comes with sklearn in sklearn.datasets, we have loaded it, normalized it and stored it in the csv file which we load in 
+our models files.
