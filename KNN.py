@@ -1,5 +1,3 @@
-from collections import Counter
-
 import pandas
 import matplotlib.pyplot as plt
 
@@ -41,11 +39,15 @@ class KNNClassifier(KNNBase):
         y_pred = []
         for vec in x_test:
             res = self.nearestPointLabels(vec)
-            res = Counter(res)
+            counter = dict()
+            for v in res:
+                if(v in counter):
+                    counter[v]+=1
+                else:
+                    counter[v]=1
             majorLabel = -1
             curr = 0
-            #Majority Vote
-            for k,v in res.items():
+            for k,v in counter.items():
                 if(v>curr):
                     majorLabel = k
                     curr=v
@@ -94,7 +96,6 @@ if __name__=="__main__":
     plt.ylabel("accuracy of sklearn's knn")
     plt.show()
     
-
     #Load Boston data and split
     boston = pandas.read_csv("Data/BostonHP.csv").drop("Unnamed: 0", axis=1)
     boston_L = list(boston["label"])
