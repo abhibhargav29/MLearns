@@ -14,7 +14,7 @@ identical to that of sklearn's model
 We have used same base class for both classification and regression classes, only the predict method is different. We take average of the neighbors y values. Its accuracy is also identical to sklearn's KNN regressor.
 
 ## Naive Bayes
-
+We have implemented gaussian naive bayes.
 
 ## DATA
 <ins>Iris:</ins>
