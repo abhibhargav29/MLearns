@@ -18,7 +18,7 @@ We have implemented gaussian naive bayes, in this algorithm we use bayes theorem
 variable smoothing like sklearn and thus compared our accuracy with that of sklearn's GaussianNB at var_smoothing=0. Naive Bayes is rarely used for regression so we have not 
 implemented a regression class.
 
-## DATA
+## Data
 <ins>Iris:</ins>
 The dataset is taken for iris flower dataset kaggle, it is a very famous toy dataset. It needs not to be normalized because all parameters are in inches only. We have 3 class 
 classification with balanced data for each class. Link: https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-pages/data/iris.csv
