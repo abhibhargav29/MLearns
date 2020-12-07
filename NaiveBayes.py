@@ -10,7 +10,8 @@ from sklearn.metrics import accuracy_score
 class NaiveBayes():
     def __init__(self):
         pass
-
+    
+    #Separate different classes
     def separateByClass(self, X, y):
         classes, counts = np.unique(y, return_counts=True)
         self.classes = classes
@@ -23,6 +24,7 @@ class NaiveBayes():
             self.class_freq[c] = self.class_counts[c]/sum(list(self.class_counts.values()))
         return datasets
 
+    #Calculate mean and standard deviation for each class
     def fit(self, X, y):
         datasets = self.separateByClass(X, y)
         self.means = {}
@@ -31,10 +33,12 @@ class NaiveBayes():
             self.means[c] = np.mean(datasets[c], axis=0)[0]
             self.std[c] = np.std(datasets[c], axis=0)[0]
     
+    #Using pdf of a Gaussian distribution
     def calculateProb(self, x, mean, std):
         exponent = math.exp(-((x-mean)**2)/(2*(std**2)))
         return (1/math.sqrt(2*math.pi)*std)*exponent
 
+    #Calculation of probability of belonging to each class
     def predictProb(self, X):
         classProb = {c:math.log(self.class_freq[c], math.e) for c in self.classes}
         for c in self.classes:
@@ -44,6 +48,7 @@ class NaiveBayes():
             classProb[c] = math.exp(temp)
         return classProb
 
+    #Final prediction
     def predict(self, X):
         y_pred = []
         for x in X:
