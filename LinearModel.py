@@ -6,6 +6,7 @@ from sklearn.linear_model import LogisticRegression, LinearRegression
 from sklearn import model_selection
 from sklearn.metrics import accuracy_score, r2_score
 
+#Class for logistic regression
 class LogReg:
     def __init__(self, lr=0.01, num_iter=100000, fit_intercept=True, verbose=False):
         self.lr = lr
