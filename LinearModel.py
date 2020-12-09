@@ -1,4 +1,5 @@
 import numpy as np
+from numpy.random import rand
 import pandas
 import matplotlib.pyplot as plt
 
@@ -6,47 +7,62 @@ from sklearn.linear_model import LogisticRegression, LinearRegression
 from sklearn import model_selection
 from sklearn.metrics import accuracy_score, r2_score
 
-#Class for logistic regression
 class LogReg:
-    def __init__(self, lr=0.01, num_iter=100000, fit_intercept=True, verbose=False):
-        self.lr = lr
+    def __init__(self, C=1.0, learning_rate=0.05, num_iter=100):
+        self.learning_rate = learning_rate
         self.num_iter = num_iter
-        self.fit_intercept = fit_intercept
-        self.verbose = verbose
+        self.C = C
     
-    def __add_intercept(self, X):
-        intercept = np.ones((X.shape[0], 1))
-        return np.concatenate((intercept, X), axis=1)
-    
-    def __sigmoid(self, z):
+    def sigmoid(self, z):
         return 1 / (1 + np.exp(-z))
     
-    def __loss(self, h, y):
-        return (-y * np.log(h) - (1 - y) * np.log(1 - h)).mean()
-    
-    def fit(self, X, y):
-        if self.fit_intercept:
-            X = self.__add_intercept(X)
-        
-        # weights initialization
-        self.theta = np.zeros(X.shape[1])
-        
-        for i in range(self.num_iter):
-            z = np.dot(X, self.theta)
-            h = self.__sigmoid(z)
-            gradient = np.dot(X.T, (h - y)) / y.size
-            self.theta -= self.lr * gradient
+    def fit(self, X, y):        
+        weights = rand(X.shape[1])
+        N = len(X)
+
+        # Gradient Descent
+        i=0 
+        while(i<self.num_iter):
+            y_hat = self.sigmoid(np.dot(X, weights)) + ((1/self.C) * sum(weights))
+            weights -= self.learning_rate * np.dot(X.T,  y_hat - y) / N            
+            i+=1
             
-            if(self.verbose == True and i % 10000 == 0):
-                z = np.dot(X, self.theta)
-                h = self.__sigmoid(z)
-                print(f'loss: {self.__loss(h, y)} \t')
+        self.weights = weights
     
-    def predict_prob(self, X):
-        if self.fit_intercept:
-            X = self.__add_intercept(X)
-    
-        return self.__sigmoid(np.dot(X, self.theta))
-    
-    def predict(self, X, threshold):
-        return self.predict_prob(X) >= threshold
+    def predict(self, X):        
+        # Predicting with sigmoid function
+        z = np.dot(X, self.weights)
+        # Returning binary result
+        return [1 if i > 0.5 else 0 for i in (self.sigmoid(z)+(1/self.C)*sum(self.weights))]
+
+if __name__=="__main__":
+    #Load iris data and split
+    iris = pandas.read_csv("Data/iris.csv")    
+    iris=iris.drop("species", axis=1).to_numpy()
+    iris_L = [0]*50+[1]*100
+    X_train,X_test,y_train,y_test=model_selection.train_test_split(iris,iris_L,test_size=0.1)
+
+    #Test classification model and compare it with sklearn's model
+    C_values = [0.01, 0.1, 1, 10, 100]
+    accModel1= []
+    accModel2= []
+
+    for c in C_values:
+        model1 = LogReg(C=c)
+        model1.fit(X_train, y_train)
+        y_pred = model1.predict(X_test)
+        accModel1.append(round(accuracy_score(y_test,y_pred)*100,2))
+
+    for c in C_values:
+        model2 = LogisticRegression(C=c, penalty="l1", solver="liblinear", fit_intercept=False)
+        model2.fit(X_train, y_train)
+        y_pred = model2.predict(X_test)
+        accModel2.append(round(accuracy_score(y_test,y_pred)*100,2))
+
+    print(accModel1)
+    print(accModel2)
+    plt.plot(accModel1, accModel2)
+    plt.title("KNN Classifier Accuracy comparison")
+    plt.xlabel("accuracy of our knn")
+    plt.ylabel("accuracy of sklearn's knn")
+    plt.show()
