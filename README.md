@@ -1,8 +1,8 @@
 # MLearns
-Welcome to Machine Learns, we have here implemented various machine learning models using various techniques and compared them side by side with sklearn's implementations in terms 
-of accuracy(for classification) and r2 score(for regression). We use iris dataset for the classification and boston house prices dataset for regression. The output of each file
-is one or mode graphs comparing accuracies of our and sklearn's model on various values of hyperparameters. The more close these graphs are to the straight line x=y, the better is 
-our implementation(considering sklearn's model a benchmark). 
+Welcome to Machine Learns, we have here implemented various machine learning models using various techniques and compared them side by side with sklearn's implementations in 
+terms of accuracy(for classification) and r2 score(for regression). We use iris dataset for the classification and boston house prices dataset for regression. The output of each 
+file is accuracies of our and sklearn's model and one or more graphs comparing accuracies of our and sklearn's model on various values of hyperparameters. The more close these 
+graphs are to the straight line x=y, the better is our implementation(considering sklearn's model a benchmark). 
 
 ## KNN
 <ins>KNNClassifier:</ins>
@@ -11,17 +11,19 @@ model is implemented as a class and we have to pass k and p along with declarati
 identical to that of sklearn's model
 
 <ins>KNNRegressor:</ins>
-We have used same base class for both classification and regression classes, only the predict method is different. We take average of the neighbors y values. Its accuracy is also identical to sklearn's KNN regressor.
+We have used same base class for both classification and regression classes, only the predict method is different. We take average of the neighbors y values. Its r2 scor is 
+identical to sklearn's KNN regressor.
 
 ## Linear Model
 <ins>Logistic Regression:</ins>
-We have implemented our own logistic regression model in LogReg class with L1 regularization. The accuracies for different values of hyperparameters were almost similar to 
-sklearn's model on setting the parameters similarly like regularization, solver algorithm, etc. In fact, they were identical for most values of hyperparameters.
+We have implemented our own logistic regression model in LogReg class with L1 regularization. Our logistic regression class can only do binary classification as we have not used 
+1 vs rest technique. The accuracies for different values of hyperparameters were almost similar to sklearn's model on setting the parameters similarly like regularization, 
+solver algorithm, etc. In fact, they were identical for most values of hyperparameters.
 
 ## Naive Bayes
 We have implemented gaussian naive bayes, in this algorithm we use bayes theorem and calculate probabilities assuming that features are gaussian distributed. We have not used 
-variable smoothing like sklearn and thus compared our accuracy with that of sklearn's GaussianNB at var_smoothing=0. Naive Bayes is rarely used for regression so we have not 
-implemented a regression class.
+variable smoothing like sklearn and thus compared our accuracy with that of sklearn's GaussianNB at var_smoothing=0 and their is no graph for different smoothing. Naive Bayes is 
+rarely used for regression so we have not implemented a regression class.
 
 ## Data
 <ins>Iris:</ins>
