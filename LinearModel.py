@@ -7,15 +7,19 @@ from sklearn.linear_model import LogisticRegression, LinearRegression
 from sklearn import model_selection
 from sklearn.metrics import accuracy_score, r2_score
 
+#Logistic Regression class
 class LogReg:
+    #Learning rate and number of iterations will be used in gradient descent
     def __init__(self, C=1.0, learning_rate=0.05, num_iter=100):
         self.learning_rate = learning_rate
         self.num_iter = num_iter
         self.C = C
     
+    #The sigmoid function
     def sigmoid(self, z):
         return 1 / (1 + np.exp(-z))
     
+    #Fit to data, find weight vector
     def fit(self, X, y):        
         weights = rand(X.shape[1])
         N = len(X)
@@ -29,14 +33,13 @@ class LogReg:
             
         self.weights = weights
     
+    #Predict binary result by using output of sigmoid function
     def predict(self, X):        
-        # Predicting with sigmoid function
         z = np.dot(X, self.weights)
-        # Returning binary result
         return [1 if i > 0.5 else 0 for i in (self.sigmoid(z)+(1/self.C)*sum(self.weights))]
 
 if __name__=="__main__":
-    #Load iris data and split
+    #Load iris data and split and convert it to a binary classification problem
     iris = pandas.read_csv("Data/iris.csv")    
     iris=iris.drop("species", axis=1).to_numpy()
     iris_L = [0]*50+[1]*100
