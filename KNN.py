@@ -74,7 +74,7 @@ if __name__=="__main__":
     X_train,X_test,y_train,y_test=model_selection.train_test_split(iris,iris_L,test_size=0.1)
 
     #Test classification model and compare it with sklearn's model
-    k_values = list(range(1,50,2))
+    k_values = list(range(1,40,2))
     accModel1= []
     accModel2= []
 
@@ -90,11 +90,14 @@ if __name__=="__main__":
         y_pred = model2.predict(X_test)
         accModel2.append(round(accuracy_score(y_test,y_pred)*100,2))
 
+    print("Our Accuracies: ", accModel1)
+    print("Sklearn's Accuracies: ", accModel2)
     plt.plot(accModel1, accModel2)
     plt.title("KNN Classifier Accuracy comparison")
     plt.xlabel("accuracy of our knn")
     plt.ylabel("accuracy of sklearn's knn")
     plt.show()
+    print()
     
     #Load Boston data and split
     boston = pandas.read_csv("Data/BostonHP.csv").drop("Unnamed: 0", axis=1)
@@ -103,26 +106,27 @@ if __name__=="__main__":
     bos_X_train,bos_X_test,bos_y_train,bos_y_test=model_selection.train_test_split(boston,boston_L,test_size=0.1)
 
     #Test regression model and compare it with sklearn's model
-    k_values = list(range(1,50,2))
-    accModel1= []
-    accModel2= []
+    k_values = list(range(1,40,2))
+    scoreModel1= []
+    scoreModel2= []
     
     for k in k_values:
         model1 = KNNRegressor(n_neighbors=k)
         model1.fit(bos_X_train, bos_y_train)
         y_pred = model1.predict(bos_X_test)
-        accModel1.append(round(r2_score(bos_y_test,y_pred), 2))
+        scoreModel1.append(round(r2_score(bos_y_test,y_pred), 2))
 
     
     for k in k_values:
         model2 = KNeighborsRegressor(n_neighbors=k)
         model2.fit(bos_X_train, bos_y_train)
         y_pred = model2.predict(bos_X_test)
-        accModel2.append(round(r2_score(bos_y_test,y_pred), 2))
+        scoreModel2.append(round(r2_score(bos_y_test,y_pred), 2))
 
-    
-    plt.plot(accModel1, accModel2)
-    plt.title("KNN Regression Accuracy comparison")
-    plt.xlabel("accuracy of our knn")
-    plt.ylabel("accuracy of sklearn's knn")
+    print("Our scores: ", scoreModel1)
+    print("Sklearn's score: ", scoreModel2)
+    plt.plot(scoreModel1, scoreModel2)
+    plt.title("KNN Regression R2Score comparison")
+    plt.xlabel("score of our knn")
+    plt.ylabel("score of sklearn's knn")
     plt.show()
