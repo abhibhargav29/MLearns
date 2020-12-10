@@ -79,5 +79,5 @@ if __name__=="__main__":
     y_pred = model2.predict(X_test)
     accModel2 = round(accuracy_score(y_test, y_pred)*100,2)
 
-    print(accModel1)
-    print(accModel2)
+    print("Our Accuracy: ",accModel1)
+    print("Sklearn's Accuracy", accModel2)
