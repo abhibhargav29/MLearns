@@ -1,18 +1,22 @@
 # MLearns
+<justify>
 Welcome to Machine Learns, we have here implemented various machine learning models using various techniques and compared them side by side with sklearn's implementations in 
 terms of accuracy(for classification) and r2 score(for regression). We use iris dataset for the classification and boston house prices dataset for regression. The output of each 
-file is accuracies of our and sklearn's model and one or more graphs comparing accuracies of our and sklearn's model on various values of hyperparameters. The more close these 
-graphs are to the straight line x=y, the better is our implementation(considering sklearn's model a benchmark). 
+file is accuracies of our and sklearn's model and one or more scatter plots comparing accuracies of our and sklearn's model as on various values of hyperparameters. The more 
+close these points are to the straight line x=y, the better is our implementation(considering sklearn's model a benchmark). 
+</justify>
 
 ## KNN
 <ins>KNNClassifier:</ins>
 We have implemented knn using brute force algorithm, majority vote technique for label determination and used minkowski distance, the user can provide his own values for p. The
 model is implemented as a class and we have to pass k and p along with declaration. It has a fit and predict method which takes in numpy arrays or lists. Its accuracies were 
-identical to that of sklearn's model
+identical to that of sklearn's model. We do not get to see them properly in the scatter plot as both models gave 100% accuracies for all values of k and thus we only see one 
+point(which infact is a superposition of many points).
 
 <ins>KNNRegressor:</ins>
-We have used same base class for both classification and regression classes, only the predict method is different. We take average of the neighbors y values. Its r2 scor is 
-identical to sklearn's KNN regressor.
+We have used same base class for both classification and regression classes, only the predict method is different. In Classification the predict method does majority vote while 
+in regression we do a simple average. Other methods are same due to polymorphism because we do not make use of the discrete/continuous nature of the class in any of other 
+methods. Its r2 score is identical to sklearn's KNN regressor and we can see in the scatter plot that the points are in a straight line y=x.
 
 ## Linear Model
 <ins>Logistic Regression:</ins>
