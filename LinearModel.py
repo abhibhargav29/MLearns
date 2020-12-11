@@ -9,7 +9,6 @@ from sklearn.metrics import accuracy_score, r2_score
 
 #Logistic Regression class
 class LogReg:
-    #Learning rate and number of iterations will be used in gradient descent
     def __init__(self, C=1.0, learning_rate=0.05, num_iter=100):
         self.learning_rate = learning_rate
         self.num_iter = num_iter
@@ -38,6 +37,43 @@ class LogReg:
         z = np.dot(X, self.weights)
         return [1 if i > 0.5 else 0 for i in (self.sigmoid(z)+(1/self.C)*sum(self.weights))]
 
+
+class LinReg() : 
+    def __init__(self, learning_rate=0.05, iterations=500) : 
+        self.learning_rate = learning_rate 
+        self.iterations = iterations 
+              
+    def fit( self, X, Y ) :  
+        self.X = X 
+        self.Y = Y
+
+        self.m, self.n = X.shape 
+        self.W = np.zeros(self.n)
+        self.b = 0  
+
+        i=0    
+        while(i<self.iterations):   
+            self.update_weights() 
+            i+=1
+              
+        return self
+        
+    def update_weights( self ) : 
+        Y_pred = self.predict( self.X ) 
+          
+        # calculate gradients   
+        dW = - ( 2 * ( self.X.T ).dot( self.Y - Y_pred )  ) / self.m
+        db = - 2 * np.sum( self.Y - Y_pred ) / self.m  
+          
+        # update weights 
+        self.W = self.W - self.learning_rate * dW 
+        self.b = self.b - self.learning_rate * db 
+          
+        return self
+      
+    def predict(self, X) : 
+        return X.dot(self.W) + self.b
+
 if __name__=="__main__":
     #Load iris data and split and convert it to a binary classification problem
     iris = pandas.read_csv("Data/iris.csv")    
@@ -62,10 +98,34 @@ if __name__=="__main__":
         y_pred = model2.predict(X_test)
         accModel2.append(round(accuracy_score(y_test,y_pred)*100,2))
 
-    print(accModel1)
-    print(accModel2)
+    print("Our Accuracies:", accModel1)
+    print("Sklearn's Accuracies", accModel2)
     plt.plot(accModel1, accModel2)
-    plt.title("KNN Classifier Accuracy comparison")
-    plt.xlabel("accuracy of our knn")
-    plt.ylabel("accuracy of sklearn's knn")
+    plt.title("Logistic Regression Classifier Accuracy comparison")
+    plt.xlabel("accuracy of our log reg")
+    plt.ylabel("accuracy of sklearn's log reg")
     plt.show()
+    print()
+
+    #Load Boston data and split
+    boston = pandas.read_csv("Data/BostonHP.csv").drop("Unnamed: 0", axis=1)
+    boston_L = list(boston["label"])
+    boston = boston.drop("label",axis=1).to_numpy()
+    bos_X_train,bos_X_test,bos_y_train,bos_y_test=model_selection.train_test_split(boston,boston_L,test_size=0.1)
+
+    #Test regression model and compare it with sklearn's model
+    scoreModel1 = 0
+    scoreModel2 = 0
+    
+    model1 = LinReg()
+    model1.fit(bos_X_train, bos_y_train)
+    y_pred = model1.predict(bos_X_test)
+    scoreModel1 = round(r2_score(bos_y_test,y_pred), 2)
+
+    model2 = LinearRegression()
+    model2.fit(bos_X_train, bos_y_train)
+    y_pred = model2.predict(bos_X_test)
+    scoreModel2 = round(r2_score(bos_y_test,y_pred), 2)
+
+    print("Our score: ", scoreModel1)
+    print("Sklearn's score: ", scoreModel2)
