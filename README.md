@@ -34,6 +34,8 @@ We have implemented gaussian naive bayes, in this algorithm we use bayes theorem
 variable smoothing like sklearn and thus compared our accuracy with that of sklearn's GaussianNB at var_smoothing=0 and their is no graph for different smoothing. Naive Bayes is 
 rarely used for regression so we have not implemented a regression class.
 
+## SVM
+
 ## Data
 <ins>Iris:</ins>
 The dataset is taken for iris flower dataset kaggle, it is a very famous toy dataset. It needs not to be normalized because all parameters are in inches only. We have 3 class 
