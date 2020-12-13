@@ -129,10 +129,3 @@ if __name__=="__main__":
 
     print("Our Accuracies:", accModel1)
     print("Sklearn's Accuracies", accModel2)
-    """
-    plt.scatter(accModel1, accModel2)
-    plt.title("Linear SVM Classifier Accuracy comparison")
-    plt.xlabel("accuracy of our SVM")
-    plt.ylabel("accuracy of sklearn's SVM")
-    plt.show()
-    print()"""
