@@ -35,6 +35,7 @@ variable smoothing like sklearn and thus compared our accuracy with that of skle
 rarely used for regression so we have not implemented a regression class.
 
 ## SVM
+We have implemented kernel SVM with linear, polynomial and rbf kernel.
 
 ## Data
 <ins>Iris:</ins>
