@@ -37,6 +37,8 @@ rarely used for regression so we have not implemented a regression class.
 ## SVM
 We have implemented kernel SVM with linear, polynomial and rbf kernel.
 
+## Decision Tree
+
 ## Data
 <ins>Iris:</ins>
 The dataset is taken for iris flower dataset kaggle, it is a very famous toy dataset. It needs not to be normalized because all parameters are in inches only. We have 3 class 
