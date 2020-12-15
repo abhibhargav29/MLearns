@@ -1,5 +1,5 @@
 # MLearns
-<p>
+<p align="justify">
 Welcome to Machine Learns, we have here implemented various machine learning models using various techniques and compared them side by side with sklearn's implementations in 
 terms of accuracy(for classification) and r2 score(for regression). We use iris dataset for the classification and boston house prices dataset for regression. The output of each 
 file is accuracies of our and sklearn's model and one or more scatter plots comparing accuracies of our and sklearn's model as on various values of hyperparameters. The more 
