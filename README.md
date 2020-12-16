@@ -38,6 +38,7 @@ rarely used for regression so we have not implemented a regression class.
 We have implemented kernel SVM with linear, polynomial and rbf kernel.
 
 ## Decision Tree
+We have implemeted decision tree using cart algorithm and gini impurity as the metric for split.
 
 ## Data
 <ins>Iris:</ins>
