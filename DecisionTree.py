@@ -18,16 +18,13 @@ class DecisionTree:
     def __init__(self, max_depth=None):
         self.max_depth = max_depth
 
-
     def fit(self, X, y):
         self.n_classes_ = len(set(y))
         self.n_features_ = X.shape[1]
         self.tree_ = self._grow_tree(X, y)
 
-
     def predict(self, X):
         return [self._predict(inputs) for inputs in X]
-
 
     def _best_split(self, X, y):
         m = y.size
@@ -59,7 +56,6 @@ class DecisionTree:
                     best_thr = (thresholds[i] + thresholds[i - 1]) / 2
         return best_idx, best_thr
 
-
     def _grow_tree(self, X, y, depth=0):
         num_samples_per_class = [np.sum(y == i) for i in range(self.n_classes_)]
         predicted_class = np.argmax(num_samples_per_class)
@@ -76,7 +72,6 @@ class DecisionTree:
                 node.right = self._grow_tree(X_right, y_right, depth + 1)
         return node
 
-
     def _predict(self, inputs):
         node = self.tree_
         while node.left:
@@ -85,3 +80,35 @@ class DecisionTree:
             else:
                 node = node.right
         return node.predicted_class
+
+if __name__=="__main__":
+    #Load iris data and split
+    iris = pandas.read_csv("Data/iris.csv")    
+    iris=iris.drop("species", axis=1).to_numpy()
+    iris_L = [0]*50+[1]*50+[2]*50
+    X_train,X_test,y_train,y_test=model_selection.train_test_split(iris,iris_L,test_size=0.1)
+
+    #Test classification model and compare it with sklearn's model
+    d_values = list(range(1,10))
+    accModel1= []
+    accModel2= []
+
+    for d in d_values:
+        model1 = DecisionTree(d)
+        model1.fit(X_train, np.array(y_train))
+        y_pred = model1.predict(X_test)
+        accModel1.append(round(accuracy_score(y_test,y_pred)*100,2))
+
+    for d in d_values:
+        model2 = DecisionTreeClassifier(max_depth=d, criterion="gini")
+        model2.fit(X_train, y_train)
+        y_pred = model2.predict(X_test)
+        accModel2.append(round(accuracy_score(y_test,y_pred)*100,2))
+
+    print("Our Accuracies: ", accModel1)
+    print("Sklearn's Accuracies: ", accModel2)
+    plt.scatter(accModel1, accModel2)
+    plt.title("KNN Classifier Accuracy comparison")
+    plt.xlabel("accuracy of our knn")
+    plt.ylabel("accuracy of sklearn's knn")
+    plt.show()
