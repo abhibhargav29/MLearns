@@ -40,6 +40,8 @@ We have implemented kernel SVM with linear, polynomial and rbf kernel.
 ## Decision Tree
 We have implemeted decision tree using cart algorithm and gini impurity as the metric for split.
 
+## Random Forest
+
 ## Data
 <ins>Iris:</ins>
 The dataset is taken for iris flower dataset kaggle, it is a very famous toy dataset. It needs not to be normalized because all parameters are in inches only. We have 3 class 
