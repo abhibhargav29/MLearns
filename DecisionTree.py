@@ -15,7 +15,7 @@ class Node:
         self.right = None
 
 class DecisionTree:
-    def __init__(self, max_depth=None):
+    def __init__(self, max_depth=10):
         self.max_depth = max_depth
 
     def fit(self, X, y):
@@ -108,7 +108,7 @@ if __name__=="__main__":
     print("Our Accuracies: ", accModel1)
     print("Sklearn's Accuracies: ", accModel2)
     plt.scatter(accModel1, accModel2)
-    plt.title("KNN Classifier Accuracy comparison")
-    plt.xlabel("accuracy of our knn")
-    plt.ylabel("accuracy of sklearn's knn")
+    plt.title("Decision Tree Accuracy comparison")
+    plt.xlabel("accuracy of our DT")
+    plt.ylabel("accuracy of sklearn's DT")
     plt.show()
