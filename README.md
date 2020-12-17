@@ -45,7 +45,7 @@ We have implemeted decision tree using cart algorithm and gini impurity as the m
 ## Data
 <ins>Iris:</ins>
 The dataset is taken for iris flower dataset kaggle, it is a very famous toy dataset. It needs not to be normalized because all parameters are in inches only. We have 3 class 
-classification with balanced data for each class. Link: https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-pages/data/iris.csv
+classification with balanced data for each class.<br> Link: https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-pages/data/iris.csv
 
 <ins>BostonHP:</ins>
 This is the boston house prices dataset which has 12-features or variables for 506 houses and we have to predict the house price. It is already stored in standardized form and 
