@@ -7,11 +7,13 @@ close these points are to the straight line x=y, the better is our implementatio
 </p>
 
 ## KNN
+<p align="justify">
 <ins>KNNClassifier:</ins>
 We have implemented knn using brute force algorithm, majority vote technique for label determination and used minkowski distance, the user can provide his own values for p. The
 model is implemented as a class and we have to pass k and p along with declaration. It has a fit and predict method which takes in numpy arrays or lists. Its accuracies were 
 identical to that of sklearn's model. We do not get to see them properly in the scatter plot as both models gave 100% accuracies for all values of k and thus we only see one 
 point(which infact is a superposition of many points).
+</p>
 
 <ins>KNNRegressor:</ins>
 We have used same base class for both classification and regression classes, only the predict method is different. In Classification the predict method does majority vote while 
