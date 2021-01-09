@@ -15,10 +15,12 @@ identical to that of sklearn's model. We do not get to see them properly in the 
 point(which infact is a superposition of many points).
 </p>
 
+<p align="justify">
 <ins>KNNRegressor:</ins>
 We have used same base class for both classification and regression classes, only the predict method is different. In Classification the predict method does majority vote while 
 in regression we do a simple average. Other methods are same due to polymorphism because we do not make use of the discrete/continuous nature of the class in any of other 
 methods. Its r2 score is identical to sklearn's KNN regressor and we can see in the scatter plot that the points are in a straight line y=x.
+</p>
 
 ## Linear Model
 <ins>Logistic Regression:</ins>
