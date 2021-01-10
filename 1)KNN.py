@@ -92,10 +92,10 @@ if __name__=="__main__":
 
     print("Our Accuracies: ", accModel1)
     print("Sklearn's Accuracies: ", accModel2)
-    plt.plot(accModel1, accModel2)
+    plt.scatter(accModel1, accModel2)
     plt.title("KNN Classifier Accuracy comparison")
-    plt.xlabel("accuracy of our knn")
-    plt.ylabel("accuracy of sklearn's knn")
+    plt.xlabel("Accuracy of our knn")
+    plt.ylabel("Accuracy of sklearn's knn")
     plt.show()
     print()
     
@@ -125,8 +125,8 @@ if __name__=="__main__":
 
     print("Our scores: ", scoreModel1)
     print("Sklearn's score: ", scoreModel2)
-    plt.plot(scoreModel1, scoreModel2)
+    plt.scatter(scoreModel1, scoreModel2)
     plt.title("KNN Regression R2Score comparison")
-    plt.xlabel("score of our knn")
-    plt.ylabel("score of sklearn's knn")
+    plt.xlabel("Score of our knn")
+    plt.ylabel("Score of sklearn's knn")
     plt.show()
