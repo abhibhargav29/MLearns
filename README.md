@@ -3,16 +3,16 @@
 Welcome to Machine Learns, we have here implemented various machine learning models using various techniques and compared them side by side with sklearn's implementations in 
 terms of accuracy(for classification) and r2 score(for regression). We use iris dataset for the classification and boston house prices dataset for regression. The output of each 
 file is accuracies of our and sklearn's model and one or more scatter plots comparing accuracies of our and sklearn's model as on various values of hyperparameters. The more 
-close these points are to the straight line x=y, the better is our implementation(considering sklearn's model a benchmark). 
+close these points are to the straight line y=x, the better is our implementation(considering sklearn's model a benchmark). 
 </p>
 
 ## KNN
 <p align="justify">
 <ins>KNNClassifier:</ins>
-We have implemented knn using brute force algorithm, majority vote technique for label determination and used minkowski distance, the user can provide his own values for p. The
+We have implemented knn using brute force algorithm, majority vote technique for label determination and used minkowski distance(the user can provide his own values for p). The
 model is implemented as a class and we have to pass k and p along with declaration. It has a fit and predict method which takes in numpy arrays or lists. Its accuracies were 
-identical to that of sklearn's model. We do not get to see them properly in the scatter plot as both models gave 100% accuracies for all values of k and thus we only see one 
-point(which infact is a superposition of many points).
+identical to that of sklearn's model. We do not get to see them properly in the scatter plot as both models gave almost 100% accuracies for all values of k and thus we only see 
+one point(which infact is a superposition of many points).
 </p>
 
 <p align="justify">
