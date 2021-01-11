@@ -37,7 +37,7 @@ class LogReg:
         z = np.dot(X, self.weights)
         return [1 if i > 0.5 else 0 for i in (self.sigmoid(z)+(1/self.C)*sum(self.weights))]
 
-
+#Linear Regression Class
 class LinReg() : 
     def __init__(self, learning_rate=0.05, iterations=100): 
         self.learning_rate = learning_rate 
@@ -61,6 +61,7 @@ class LinReg() :
     def predict(self, X) : 
         return X.dot(self.W) + self.b
 
+    
 if __name__=="__main__":
     #Load iris data and split and convert it to a binary classification problem
     iris = pandas.read_csv("Data/iris.csv")    
@@ -89,8 +90,8 @@ if __name__=="__main__":
     print("Sklearn's Accuracies", accModel2)
     plt.scatter(accModel1, accModel2)
     plt.title("Logistic Regression Classifier Accuracy comparison")
-    plt.xlabel("accuracy of our log reg")
-    plt.ylabel("accuracy of sklearn's log reg")
+    plt.xlabel("Accuracy of our log reg")
+    plt.ylabel("Accuracy of sklearn's log reg")
     plt.show()
     print()
 
