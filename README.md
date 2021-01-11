@@ -22,16 +22,20 @@ in regression we do a simple average. Other methods are same due to polymorphism
 methods. Its r2 score is identical to sklearn's KNN regressor and we can see in the scatter plot that the points are in a straight line y=x.
 </p>
 
-## Linear Model
+## LINEAR MODEL
+<p align="justify">
 <ins>Logistic Regression:</ins>
 We have implemented our own logistic regression model in LogReg class with L1 regularization. Our logistic regression class can only do binary classification as we have not used 
 1 vs rest technique. The accuracies for different values of hyperparameters were almost similar to sklearn's model on setting the parameters similarly like regularization, 
-solver algorithm, etc. In fact, they were identical for most values of hyperparameters.
+solver algorithm, etc. In fact, they were identical for most values of hyperparameters, the same is not too clear from the scatter plot.
+</p>
 
+<p align="justify">
 <ins>Linear Regression:</ins>
 The class LinReg implements our linear regression model. We have used gradient descent for linear regression as well to find the best fit line. The r2 score of our model is 
-identical to that of sklearn's. Here we find two things, the weights and the constant(bias) in gradient descent unlike we did in logistic regression where we just find out the 
-weights.
+identical to that of sklearn's. Here we find two things, the weights and the constant(bias) using gradient descent unlike we did in logistic regression where we just find out 
+  the weights.
+</p>
 
 ## Naive Bayes
 We have implemented gaussian naive bayes, in this algorithm we use bayes theorem and calculate probabilities assuming that features are gaussian distributed. We have not used 
