@@ -124,7 +124,7 @@ if __name__=="__main__":
         scoreModel2.append(round(r2_score(bos_y_test,y_pred), 2))
 
     print("Our scores: ", scoreModel1)
-    print("Sklearn's score: ", scoreModel2)
+    print("Sklearn's scores: ", scoreModel2)
     plt.scatter(scoreModel1, scoreModel2)
     plt.title("KNN Regression R2Score comparison")
     plt.xlabel("Score of our knn")
