@@ -38,9 +38,11 @@ the weights.
 </p>
 
 ## NAIVE BAYES
+<p align="justify">
 We have implemented gaussian naive bayes, in this algorithm we use bayes theorem and calculate probabilities assuming that features are gaussian distributed. We have not used 
 variable smoothing like sklearn and thus compared our accuracy with that of sklearn's GaussianNB at var_smoothing=0 and their is no graph for different smoothing. Naive Bayes is 
 rarely used for regression so we have not implemented a regression class.
+</p>
 
 ## SVM
 We have implemented kernel SVM with linear, polynomial and rbf kernel.
