@@ -34,10 +34,10 @@ solver algorithm, etc. In fact, they were identical for most values of hyperpara
 <ins>Linear Regression:</ins>
 The class LinReg implements our linear regression model. We have used gradient descent for linear regression as well to find the best fit line. The r2 score of our model is 
 identical to that of sklearn's. Here we find two things, the weights and the constant(bias) using gradient descent unlike we did in logistic regression where we just find out 
-  the weights.
+the weights.
 </p>
 
-## Naive Bayes
+## NAIVE BAYES
 We have implemented gaussian naive bayes, in this algorithm we use bayes theorem and calculate probabilities assuming that features are gaussian distributed. We have not used 
 variable smoothing like sklearn and thus compared our accuracy with that of sklearn's GaussianNB at var_smoothing=0 and their is no graph for different smoothing. Naive Bayes is 
 rarely used for regression so we have not implemented a regression class.
