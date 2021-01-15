@@ -46,7 +46,10 @@ rarely used for regression so we have not implemented a regression class.
 
 ## SVM
 <p align="justify">
-We have implemented kernel SVM with linear, polynomial and rbf kernel.
+We have implemented kernel SVM with linear, polynomial and rbf kernel. This SVM class can only do binary classification. We have used cvxopt library to find solutions to the 
+equation. The fit method forms the kernel matrix and computes the solution for the weight vector and intercept. The project method finds the projection of point on the plane and 
+using the sign of that projection we find the class of that point. The accuracies of this model were not comparable to sklearn's but the hyperparameter-accuracy comparison was 
+similar.
 </p>
 
 ## Decision Tree
