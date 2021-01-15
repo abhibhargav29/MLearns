@@ -48,8 +48,9 @@ rarely used for regression so we have not implemented a regression class.
 <p align="justify">
 We have implemented kernel SVM with linear, polynomial and rbf kernel. This SVM class can only do binary classification. We have used cvxopt library to find solutions to the 
 equation. cvxopt is a very good library to find the solution to convex optimization problems. The fit method forms the kernel matrix and computes the solution for the weight 
-vector and intercept. The project method finds the projection of point on the plane and using the sign of that projection we find the class of that point. The accuracies of this 
-model were not comparable to sklearn's but the hyperparameter-accuracy comparison was similar.
+vector and intercept. The project method finds the projection of point on the plane and using the sign of that projection we find the class of that point. The regularization 
+term is given while creating an object of the model class and the additional hyperparameter depending on kernel is given during fit. The accuracies of this model were not 
+comparable to sklearn's but the hyperparameter-accuracy comparison was similar.
 </p>
 
 ## Decision Tree
