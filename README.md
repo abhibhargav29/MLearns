@@ -45,7 +45,9 @@ rarely used for regression so we have not implemented a regression class.
 </p>
 
 ## SVM
+<p align="justify">
 We have implemented kernel SVM with linear, polynomial and rbf kernel.
+</p>
 
 ## Decision Tree
 We have implemeted decision tree using cart algorithm and gini impurity as the metric for split.
