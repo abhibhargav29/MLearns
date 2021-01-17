@@ -109,6 +109,6 @@ if __name__=="__main__":
     print("Sklearn's Accuracies: ", accModel2)
     plt.scatter(accModel1, accModel2)
     plt.title("Decision Tree Accuracy comparison")
-    plt.xlabel("accuracy of our DT")
-    plt.ylabel("accuracy of sklearn's DT")
+    plt.xlabel("Accuracy of our DT")
+    plt.ylabel("Accuracy of sklearn's DT")
     plt.show()
