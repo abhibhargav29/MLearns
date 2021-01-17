@@ -61,6 +61,6 @@ if __name__=="__main__":
     print("Sklearn's Accuracies: ", accModel2)
     plt.scatter(accModel1, accModel2)
     plt.title("Random Forest Accuracy comparison")
-    plt.xlabel("accuracy of our RF")
-    plt.ylabel("accuracy of sklearn's RF")
+    plt.xlabel("Accuracy of our RF")
+    plt.ylabel("Accuracy of sklearn's RF")
     plt.show()
