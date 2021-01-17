@@ -22,7 +22,7 @@ in regression we do a simple average. Other methods are same due to polymorphism
 methods. Its r2 score is identical to sklearn's KNN regressor and we can see in the scatter plot that the points are in a straight line y=x.
 </p>
 
-## LINEAR MODEL
+## Linear Model
 <p align="justify">
 <ins>Logistic Regression:</ins>
 We have implemented our own logistic regression model in LogReg class with L1 regularization. Our logistic regression class can only do binary classification as we have not used 
@@ -37,7 +37,7 @@ identical to that of sklearn's. Here we find two things, the weights and the con
 the weights.
 </p>
 
-## NAIVE BAYES
+## Naive Bayes
 <p align="justify">
 We have implemented gaussian naive bayes, in this algorithm we use bayes theorem and calculate probabilities assuming that features are gaussian distributed. We have not used 
 variable smoothing like sklearn and thus compared our accuracy with that of sklearn's GaussianNB at var_smoothing=0 and their is no graph for different smoothing. Naive Bayes is 
