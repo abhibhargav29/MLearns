@@ -8,23 +8,27 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn import model_selection
 from sklearn.metrics import accuracy_score
 
+#Random forest class
 class RandomForest():
     def __init__ (self, n_trees=100, max_depth=None):
         self.n_trees = n_trees
         self.max_depth = max_depth
-
+    
+    #Creates the trees
     def fit(self, X, y):
         self.X = X
         self.y = y
         self.n_classes = len(set(y))
         self.trees = [self.create_tree() for i in range(self.n_trees)]
     
+    #Helper for creating single tree from sklearn
     def create_tree(self):
         idxs = np.random.choice(len(self.y), replace=True, size = len(self.y))      
         clf = DecisionTreeClassifier(max_depth=self.max_depth)
         clf.fit(self.X[idxs], self.y[idxs])
         return clf
 
+    #Predict method
     def predict(self, X):
         tree_pred = [tree.predict(X) for tree in self.trees]
         y_pred_float = np.mean(tree_pred, axis=0)
