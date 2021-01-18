@@ -6,6 +6,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn import model_selection
 from sklearn.metrics import accuracy_score
 
+#Tree Node
 class Node:
     def __init__(self, predicted_class):
         self.predicted_class = predicted_class
@@ -14,18 +15,35 @@ class Node:
         self.left = None
         self.right = None
 
+#Model
 class DecisionTree:
     def __init__(self, max_depth=10):
         self.max_depth = max_depth
-
+    
+    #Fit method makes the tree
     def fit(self, X, y):
         self.n_classes_ = len(set(y))
         self.n_features_ = X.shape[1]
         self.tree_ = self._grow_tree(X, y)
-
-    def predict(self, X):
-        return [self._predict(inputs) for inputs in X]
-
+    
+    #Called by the fit method, recursive function
+    def _grow_tree(self, X, y, depth=0):
+        num_samples_per_class = [np.sum(y == i) for i in range(self.n_classes_)]
+        predicted_class = np.argmax(num_samples_per_class)
+        node = Node(predicted_class=predicted_class)
+        if depth < self.max_depth:
+            idx, thr = self._best_split(X, y)
+            if idx is not None:
+                indices_left = X[:, idx] < thr
+                X_left, y_left = X[indices_left], y[indices_left]
+                X_right, y_right = X[~indices_left], y[~indices_left]
+                node.feature_index = idx
+                node.threshold = thr
+                node.left = self._grow_tree(X_left, y_left, depth + 1)
+                node.right = self._grow_tree(X_right, y_right, depth + 1)
+        return node
+    
+    #Called by the grow tree, finds best split feature and threshold
     def _best_split(self, X, y):
         m = y.size
         if m <= 1:
@@ -56,22 +74,11 @@ class DecisionTree:
                     best_thr = (thresholds[i] + thresholds[i - 1]) / 2
         return best_idx, best_thr
 
-    def _grow_tree(self, X, y, depth=0):
-        num_samples_per_class = [np.sum(y == i) for i in range(self.n_classes_)]
-        predicted_class = np.argmax(num_samples_per_class)
-        node = Node(predicted_class=predicted_class)
-        if depth < self.max_depth:
-            idx, thr = self._best_split(X, y)
-            if idx is not None:
-                indices_left = X[:, idx] < thr
-                X_left, y_left = X[indices_left], y[indices_left]
-                X_right, y_right = X[~indices_left], y[~indices_left]
-                node.feature_index = idx
-                node.threshold = thr
-                node.left = self._grow_tree(X_left, y_left, depth + 1)
-                node.right = self._grow_tree(X_right, y_right, depth + 1)
-        return node
-
+    #Predict
+    def predict(self, X):
+        return [self._predict(inputs) for inputs in X]
+    
+    #Helper for predict
     def _predict(self, inputs):
         node = self.tree_
         while node.left:
