@@ -54,7 +54,11 @@ comparable to sklearn's but the hyperparameter-accuracy comparison was similar.
 </p>
 
 ## Decision Tree
-We have implemeted decision tree using cart algorithm and gini impurity as the metric for split.
+<p align="justify">
+We have implemeted decision tree using cart algorithm and gini impurity as the metric for split. We assume gaussian distributed features and apply the thresholds accordingly. 
+The hyperparameter of max depth is passed during the object initialization. We have obtained very similar accuracies to that of sklearn for various values of hyperparameter, 
+this is not easily visible in the graph though.
+</p>
 
 ## Random Forest
 
