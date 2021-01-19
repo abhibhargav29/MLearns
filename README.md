@@ -61,6 +61,10 @@ this is not easily visible in the graph though.
 </p>
 
 ## Random Forest
+<p align="justify">
+We have used the sklearn decision trees to help us implement random forest. It trains a number of these trees and finds the result that they give and then superimpose them to 
+get the final class. The hyperparameter of number of trees is passed during object initialization. The accuracy of our model was identical to sklearn on various values of 
+hyperparameters, both gave 100% accuracy for all values.
 
 ## Data
 <p align="justify">
