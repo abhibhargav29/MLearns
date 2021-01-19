@@ -62,7 +62,7 @@ We have implemeted decision tree using cart algorithm and gini impurity as the m
 <p align="justify">
 <ins>Iris:</ins>
 The dataset is taken for iris flower dataset kaggle, it is a very famous toy dataset. It needs not to be normalized because all parameters are in inches only. We have 3 class 
-classification with balanced data for each class and 4 features.
+classification with balanced data for each class and 4 features, there are a total of 150 rows, 50 for each class.
 </p>
 
 <p align="justify">
